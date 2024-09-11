@@ -91,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_LOWER] = LAYOUT(
 
   //|----------------------------------------------|                 |----------------------------------------------|
-      KC_TAB,  KC_UNDS, KC_EQUAL,  KC_MINS, KC_PLUS,                     KC_MUTE, KC_VOLD, KC_MPLY, KC_VOLU, KC_BSLS,
+      KC_COLN,  KC_UNDS, KC_EQUAL,  KC_MINS, KC_PLUS,                     KC_MUTE, KC_VOLD, KC_MPLY, KC_VOLU, KC_BSLS,
   //|--------+--------+--------+--------+--------+-|                 |--------+--------+--------+--------+----------|
      KC_ANGL, KC_ANGR, KC_LPRN, KC_RPRN, KC_PGUP,                      KC_DQUO, KC_LEFT, KC_UP,   KC_RIGHT,KC_QUOT,
   //|--------+--------+--------+--------+--------+-|                 |--------+--------+--------+--------+----------|
