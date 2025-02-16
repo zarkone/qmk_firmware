@@ -45,6 +45,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ALT_ENT LALT_T(KC_ENT)
 #define ALT_SPC LALT_T(KC_SPC)
 
+
+#if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+#    include "rgb.c"
+#endif
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_split_3x6_3(
     //|-----------------------------------------------------|                    |-----------------------------------------------------|
@@ -94,3 +99,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                        _______, _______, _______,    _______, _______, _______
   )
 };
+
+#if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+layer_state_t layer_state_set_user(layer_state_t state) {
+    /* For any layer other than default, save current RGB state and switch to layer-based RGB */
+    if (layer_state_cmp(state, 0)) {
+        restore_rgb_config();
+        rgblight_sethsv_noeeprom(HSV_PURPLE);
+    } else {
+        uint8_t layer = get_highest_layer(state);
+        if (layer_state_cmp(layer_state, 0)) save_rgb_config();
+        rgb_by_layer_evil(layer);
+        ///rgb_constantly();
+    }
+    return state;
+}
+#endif
