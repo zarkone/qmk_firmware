@@ -34,6 +34,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define LOW_SPC LT(1, KC_SPC)
 #define RAI_EQ LT(2, KC_EQL)
+#define ADJ_TAB LT(3, KC_TAB)
 #define RAI_SPC LT(2, KC_SPC)
 #define RAI_ENT LT(2, KC_ENT)
 #define LOW_BSP LT(1, KC_BSPC)
@@ -53,7 +54,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_split_3x6_3(
     //|-----------------------------------------------------|                    |-----------------------------------------------------|
-     MO(3),  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,  KC_SCLN,  KC_QUOT,
+     ADJ_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,  KC_SCLN,  KC_GRV,
       //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LGUI, KC_A,   KC_R,    KC_S,    KC_T,    KC_G,                          KC_M,    KC_N,    KC_E,  KC_I,    KC_O,  KC_RGUI,
   //---------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
