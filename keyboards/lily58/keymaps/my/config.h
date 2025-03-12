@@ -43,5 +43,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Underglow
 
 #undef RGBLIGHT_LED_COUNT
-#define RGBLIGHT_LED_COUNT 14    // Number of LEDs
+#define RGBLIGHT_LED_COUNT 12    // Number of LEDs
 #define RGBLIGHT_SLEEP
+#undef RGBLIGHT_DEFAULT_MODE
+#define RGBLIGHT_DEFAULT_MODE RGBLIGHT_MODE_STATIC_LIGHT

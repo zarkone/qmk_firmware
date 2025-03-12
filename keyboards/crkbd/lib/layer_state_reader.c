@@ -10,7 +10,7 @@
 
 char layer_state_str[24];
 
-const char *read_layer_state(void) {
+const char *_read_layer_state(void) {
   switch (layer_state)
   {
   case L_BASE:

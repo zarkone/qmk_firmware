@@ -19,34 +19,33 @@ enum layer_number {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT(
-  KC_ESC,   KC_UNDS,KC_COLN, KC_EQUAL,KC_MINS, KC_PLUS,                  _______, KC_VOLD, KC_MPLY, KC_VOLU, KC_GRV, KC_TILD,
-  KC_TAB,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_B,                     KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, _______,
-  KC_LGUI,  KC_A,   KC_R,    KC_S,    KC_T,    KC_G,                     KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    KC_LGUI,
-  KC_LSFT,  CTL_Z,   KC_X,    KC_C,    KC_D,    KC_V, CW_TOGG,  KC_CAPS,  KC_K,    KC_H,    KC_COMM, KC_DOT,  CTL_SLSH,  KC_LSFT,
-                       MO(_ADJUST), MO(_RAISE),LOW_SPC, ALT_SPC, ALT_ENT, LOW_BSP, MO(_RAISE), MO(_ADJUST)
+  KC_ESC, KC_UNDS,KC_COLN, KC_EQUAL,KC_MINS, KC_PLUS,                    _______, KC_VOLD, KC_MPLY, KC_VOLU, _______, KC_TILD,
+  KC_TAB,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_B,                      KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_GRV,
+  KC_LGUI,  KC_A,   KC_R,    KC_S,    KC_T,    KC_G,                      KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    KC_LGUI,
+  KC_LSFT,  CTL_Z,   KC_X,    KC_C,    KC_D,    KC_V, CW_TOGG,   KC_CAPS,  KC_K,    KC_H,    KC_COMM, KC_DOT,  CTL_SLSH,  KC_LSFT,
+                     KC_DQUO, MO(_RAISE),LOW_SPC, ALT_SPC,   ALT_ENT, LOW_BSP, MO(_RAISE), KC_QUOT
 ),
 
  [_LOWER] = LAYOUT(
   _______, _______, _______, _______, _______, _______,                   _______, _______, _______,_______, _______,  _______,
   _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
-  XXXXXXX, KC_ANGL, KC_ANGR, KC_LPRN, KC_RPRN, KC_PGUP,                   KC_DQUO, KC_LEFT, KC_UP,   KC_RIGHT,KC_QUOT, XXXXXXX,
-  XXXXXXX, KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC, KC_PGDN, _______, _______, _______, KC_HOME, KC_DOWN, KC_END,  KC_BSLS, KC_TILD,
+  _______, KC_ANGL, KC_ANGR, KC_LPRN, KC_RPRN, KC_PGUP,                   KC_DQUO, KC_LEFT, KC_UP,   KC_RIGHT,KC_QUOT, _______,
+  _______, KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC, KC_PGDN, _______, _______, _______, KC_HOME, KC_DOWN, KC_END,  KC_BSLS, KC_TILD,
                              _______, _______, _______, _______, _______, LOW_DEL, _______, _______
 ),
 
 [_RAISE] = LAYOUT(
   _______, _______, _______, _______, _______, _______,                     _______, _______, _______, _______, _______, QK_BOOT,
-  XXXXXXX, XXXXXXX, KC_CIRC, KC_LCBR, KC_AMPR, XXXXXXX,                     XXXXXXX, KC_7,    KC_8,    KC_9,    KC_0,    _______,
-  XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  XXXXXXX,                     XXXXXXX, KC_4,    KC_5,    KC_6,    KC_PLUS, XXXXXXX,
-  XXXXXXX, XXXXXXX, KC_ASTR, KC_PIPE, KC_PERC, XXXXXXX,   _______, _______, KC_PSCR, KC_1,    KC_2,    KC_3,    KC_DOT, XXXXXXX,
+  _______, _______, KC_CIRC, KC_LCBR, KC_AMPR, KC_ASTR,                     _______, KC_7,    KC_8,    KC_9,    KC_0,    _______,
+  _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_CIRC,                     _______, KC_4,    KC_5,    KC_6,    KC_PLUS, _______,
+  _______, _______, _______, _______, KC_PERC, KC_PIPE,   _______, _______, KC_PSCR, KC_1,    KC_2,    KC_3,    KC_DOT, _______,
                              _______, _______, _______,  _______, KC_0,     KC_DOT, _______, _______
 ),
-
-  [_ADJUST] = LAYOUT(
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, KC_F10, KC_F11, KC_F12, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, KC_F7,   KC_F8, KC_F9,  XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, KC_F4,   KC_F5, KC_F6,  XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F1,   KC_F2, KC_F3,  XXXXXXX, XXXXXXX,
+[3] = LAYOUT(
+  _______, _______, _______, _______, _______, _______,                   _______, KC_F10, KC_F11, KC_F12, _______, _______,
+  _______, _______, _______, _______, _______, _______,                   _______, KC_F7,   KC_F8, KC_F9,  _______, _______,
+  _______, _______, _______, _______, _______, _______,                   _______, KC_F4,   KC_F5, KC_F6,  _______, _______,
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_F1,   KC_F2, KC_F3,  _______, _______,
                              _______, _______, _______, _______, _______,  _______, _______, _______
   )
 };
@@ -77,6 +76,9 @@ const char *read_keylogs(void);
 // const char *read_timelog(void);
 
 bool oled_task_user(void) {
+  #ifdef RGBLIGHT_ENABLE
+  rgblight_setrgb(173,235,179);
+  #endif
   if (is_keyboard_master()) {
     // If you want to change the display of OLED, you need to change here
     oled_write_ln(read_layer_state(), false);
