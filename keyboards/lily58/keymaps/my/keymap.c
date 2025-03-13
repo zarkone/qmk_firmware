@@ -19,7 +19,7 @@ enum layer_number {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT(
-  KC_ESC, KC_UNDS,KC_COLN, KC_EQUAL,KC_MINS, KC_PLUS,                    _______, KC_VOLD, KC_MPLY, KC_VOLU, _______, KC_TILD,
+  KC_ESC, KC_UNDS, KC_COLN, KC_EQUAL,KC_MINS, KC_PLUS,                    _______, KC_VOLD, KC_MPLY, KC_VOLU, _______, KC_TILD,
   KC_TAB,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_B,                      KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_GRV,
   KC_LGUI,  KC_A,   KC_R,    KC_S,    KC_T,    KC_G,                      KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    KC_LGUI,
   KC_LSFT,  CTL_Z,   KC_X,    KC_C,    KC_D,    KC_V, CW_TOGG,   KC_CAPS,  KC_K,    KC_H,    KC_COMM, KC_DOT,  CTL_SLSH,  KC_LSFT,
@@ -28,7 +28,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
  [_LOWER] = LAYOUT(
   _______, _______, _______, _______, _______, _______,                   _______, _______, _______,_______, _______,  _______,
-  _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
+  _______, KC_UNDS, KC_COLN, KC_EQUAL,KC_MINS, KC_PLUS,                    _______, KC_VOLD, KC_MPLY, KC_VOLU, _______, _______,
   _______, KC_ANGL, KC_ANGR, KC_LPRN, KC_RPRN, KC_PGUP,                   KC_DQUO, KC_LEFT, KC_UP,   KC_RIGHT,KC_QUOT, _______,
   _______, KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC, KC_PGDN, _______, _______, _______, KC_HOME, KC_DOWN, KC_END,  KC_BSLS, KC_TILD,
                              _______, _______, _______, _______, _______, LOW_DEL, _______, _______
@@ -75,10 +75,32 @@ const char *read_keylogs(void);
 // void set_timelog(void);
 // const char *read_timelog(void);
 
-bool oled_task_user(void) {
+void rgb_set_zrkn(void) {
   #ifdef RGBLIGHT_ENABLE
-  rgblight_setrgb(173,235,179);
+  rgblight_setrgb_at(173,235,179, 0);
+  rgblight_setrgb_at(173,235,179, 1);
+
+  rgblight_setrgb_at(250, 250, 51, 2);
+  rgblight_setrgb_at(250, 250, 51, 3);
+
+  rgblight_setrgb_at(250, 250, 51, 4);
+  rgblight_setrgb_at(250, 250, 51, 5);
+
+  // -- //
+
+  rgblight_setrgb_at(250, 250, 51, 6);
+  rgblight_setrgb_at(250, 250, 51, 7);
+
+  rgblight_setrgb_at(255,255,255, 8);
+
+  rgblight_setrgb_at(173,235,179, 9);
+  rgblight_setrgb_at(173,235,179, 10);
+  rgblight_setrgb_at(173,235,179, 11);
   #endif
+}
+
+bool oled_task_user(void) {
+  rgb_set_zrkn();
   if (is_keyboard_master()) {
     // If you want to change the display of OLED, you need to change here
     oled_write_ln(read_layer_state(), false);
