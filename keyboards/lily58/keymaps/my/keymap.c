@@ -77,25 +77,9 @@ const char *read_keylogs(void);
 
 void rgb_set_zrkn(void) {
   #ifdef RGBLIGHT_ENABLE
-  rgblight_setrgb_at(173,235,179, 0);
-  rgblight_setrgb_at(173,235,179, 1);
+  rgblight_setrgb(173,235,179);
+  /* rgblight_setrgb(255, 102, 204); */
 
-  rgblight_setrgb_at(250, 250, 51, 2);
-  rgblight_setrgb_at(250, 250, 51, 3);
-
-  rgblight_setrgb_at(250, 250, 51, 4);
-  rgblight_setrgb_at(250, 250, 51, 5);
-
-  // -- //
-
-  rgblight_setrgb_at(250, 250, 51, 6);
-  rgblight_setrgb_at(250, 250, 51, 7);
-
-  rgblight_setrgb_at(255,255,255, 8);
-
-  rgblight_setrgb_at(173,235,179, 9);
-  rgblight_setrgb_at(173,235,179, 10);
-  rgblight_setrgb_at(173,235,179, 11);
   #endif
 }
 
