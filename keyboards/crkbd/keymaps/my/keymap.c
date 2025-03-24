@@ -26,11 +26,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SFT_EQ MT(MOD_LSFT, KC_EQL)
 #define SFT_QT MT(MOD_RSFT, KC_QUOT)
 
-#define SFT_A MT(MOD_LSFT, KC_A)
-
-
-#define SFT_O MT(MOD_RSFT, KC_O)
-
+#define CTL_Z MT(MOD_LCTL, KC_Z)
+#define CTL_SLSH  MT(MOD_LCTL, KC_SLSH)
 
 #define LOW_SPC LT(1, KC_SPC)
 #define RAI_EQ LT(2, KC_EQL)
