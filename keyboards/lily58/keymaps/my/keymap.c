@@ -17,9 +17,15 @@ enum layer_number {
   _ADJUST,
 };
 
+enum custom_keycodes {
+    CLN_EQ = SAFE_RANGE,
+    EXCL_EQ,
+    // ... other custom keycodes
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT(
-  KC_ESC, KC_UNDS, KC_COLN, KC_EQUAL,KC_MINS, KC_PLUS,                    _______, KC_VOLD, KC_MPLY, KC_VOLU, _______, KC_TILD,
+  KC_ESC, KC_UNDS, CLN_EQ, EXCL_EQ,KC_MINS, KC_PLUS,                    _______, KC_VOLD, KC_MPLY, KC_VOLU, _______, KC_TILD,
   KC_TAB,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_B,                      KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_GRV,
   KC_LGUI,  KC_A,   KC_R,    KC_S,    KC_T,    KC_G,                      KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    KC_LGUI,
   KC_LSFT,  CTL_Z,   KC_X,    KC_C,    KC_D,    KC_V, CW_TOGG,   KC_CAPS,  KC_K,    KC_H,    KC_COMM, KC_DOT,  CTL_SLSH,  KC_LSFT,
@@ -106,6 +112,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     set_keylog(keycode, record);
 #endif
     // set_timelog();
+  }
+  switch (keycode) {
+  case CLN_EQ:
+    if (record->event.pressed) {
+      SEND_STRING(":=");
+    }
+    return false; // Skip further processing of this key
+  case EXCL_EQ:
+    if (record->event.pressed) {
+      SEND_STRING("!=");
+    }
+    return false;
   }
   return true;
 }
