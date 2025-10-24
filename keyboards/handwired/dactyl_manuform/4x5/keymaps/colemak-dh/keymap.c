@@ -38,6 +38,25 @@
 #define KC_ANGL LSFT(KC_COMM)
 #define KC_ANGR LSFT(KC_DOT)
 
+enum combos {
+    LEFT_BOTT,
+    RIGHT_BOTT,
+    QW,
+    YSEM
+};
+
+const uint16_t PROGMEM left_bott_combo[] = { KC_QUOT, KC_DQT, COMBO_END};
+const uint16_t PROGMEM right_bott_combo[] = { KC_EQL, KC_GRV, COMBO_END};
+const uint16_t PROGMEM qw_combo[] = { KC_Q, KC_W, COMBO_END};
+const uint16_t PROGMEM ysem_combo[] = { KC_Y, KC_SCLN, COMBO_END};
+
+combo_t key_combos[] = {
+    [LEFT_BOTT] = COMBO(left_bott_combo, LALT(KC_DQT)),
+    [RIGHT_BOTT] = COMBO(right_bott_combo, LALT(KC_DQT)),
+    [QW] = COMBO(qw_combo, KC_TAB),
+    [YSEM] = COMBO(ysem_combo, KC_ESC)
+};
+
 /* ---------- Emoji keycodes (send raw UTF-8) ---------- */
 enum custom_keycodes {
     EMOJI_SMILE = SAFE_RANGE, // 😄
