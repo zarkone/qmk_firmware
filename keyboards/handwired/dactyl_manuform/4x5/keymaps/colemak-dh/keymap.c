@@ -50,7 +50,7 @@ enum custom_keycodes {
     EMOJI_WAVE,               // 👋
     EMOJI_CLAP,               // 👏
     EMOJI_TADA,               // 🎉
-    EMOJI_STARS,              // ✨
+    EMOJI_LSMILE,              // 🙂
 
     EMOJI_TEAR,               // 😢
     EMOJI_CRY,                // 😭
@@ -73,7 +73,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case EMOJI_WAVE:      send_unicode_string("👋"); return false;
         case EMOJI_CLAP:      send_unicode_string("👏"); return false;
         case EMOJI_TADA:      send_unicode_string("🎉"); return false;
-        case EMOJI_STARS:     send_unicode_string("✨"); return false;
+        case EMOJI_LSMILE:     send_unicode_string("🙂"); return false;
 
         case EMOJI_TEAR:      send_unicode_string("😢"); return false;
         case EMOJI_CRY:       send_unicode_string("😭"); return false;
@@ -111,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    /* FUNC: left 3x5 = emojis (raw UTF-8); right = F-keys */
    [_FUNC] = LAYOUT(
      EMOJI_CLAP,  EMOJI_WAVE, EMOJI_FIRE,     EMOJI_PRAY,   EMOJI_BLUSH,     KC_J, KC_F7, KC_F8, KC_F9,  KC_F10,
-     EMOJI_MINDBLOW, EMOJI_OOO, EMOJI_SMILE,     EMOJI_TADA,    EMOJI_STARS,     KC_M, KC_F4, KC_F5, KC_F6,  KC_F11,
+     EMOJI_MINDBLOW, EMOJI_LSMILE, EMOJI_SMILE,     EMOJI_TADA,    EMOJI_OOO,     KC_M, KC_F4, KC_F5, KC_F6,  KC_F11,
      EMOJI_TEAR,  EMOJI_ROFL,  EMOJI_CRY, EMOJI_HEART,   EMOJI_ANGER,     KC_K, KC_F1, KC_F2, KC_F3,  KC_F12,
                                 _______, _______,                                                    _______, _______,
 
