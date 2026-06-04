@@ -9,6 +9,7 @@
 #define LOW_BSP  LT(1, KC_BSPC)
 #define LOW_DEL  LT(1, KC_DEL)
 #define LOW_SPC LT(1, KC_SPC)
+#define ALT_DQT LALT(KC_DQT)
 
 enum layer_number {
   _QWERTY = 0,
@@ -20,23 +21,24 @@ enum layer_number {
 enum custom_keycodes {
     CLN_EQ = SAFE_RANGE,
     EXCL_EQ,
+    PASTE_WS,
     // ... other custom keycodes
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT(
-  KC_ESC, KC_UNDS, CLN_EQ, EXCL_EQ,KC_MINS, KC_PLUS,                    _______, KC_VOLD, KC_MPLY, KC_VOLU, _______, KC_TILD,
+  KC_ESC, KC_UNDS, CLN_EQ, EXCL_EQ,KC_MINS, KC_PLUS,                    _______, KC_VOLD, KC_MPLY, KC_VOLU, KC_COLN, KC_TILD,
   KC_TAB,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_B,                      KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_GRV,
   KC_LGUI,  KC_A,   KC_R,    KC_S,    KC_T,    KC_G,                      KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    KC_LGUI,
-  KC_LSFT,  CTL_Z,   KC_X,    KC_C,    KC_D,    KC_V, CW_TOGG,   KC_CAPS,  KC_K,    KC_H,    KC_COMM, KC_DOT,  CTL_SLSH,  KC_LSFT,
-                     KC_DQUO, MO(_RAISE),LOW_SPC, ALT_SPC,   ALT_ENT, LOW_BSP, MO(_RAISE), KC_QUOT
+  KC_LSFT,  CTL_Z,   KC_X,   KC_C,    KC_D,    KC_V, CW_TOGG,   ALT_DQT,  KC_K,    KC_H,    KC_COMM, KC_DOT,  CTL_SLSH,  KC_LSFT,
+                     MO(_ADJUST), MO(_RAISE),LOW_SPC, ALT_SPC,   ALT_ENT, LOW_BSP, MO(_RAISE), PASTE_WS
 ),
 
  [_LOWER] = LAYOUT(
   _______, _______, _______, _______, _______, _______,                   _______, _______, _______,_______, _______,  _______,
-  _______, KC_UNDS, KC_COLN, KC_EQUAL,KC_MINS, KC_PLUS,                    _______, KC_VOLD, KC_MPLY, KC_VOLU, _______, _______,
+  _______, KC_UNDS, KC_COLN, KC_EQUAL,KC_MINS, KC_PLUS,                    _______, KC_VOLD, KC_MPLY, KC_VOLU, KC_COLN, KC_TILD,
   _______, KC_ANGL, KC_ANGR, KC_LPRN, KC_RPRN, KC_PGUP,                   KC_DQUO, KC_LEFT, KC_UP,   KC_RIGHT,KC_QUOT, _______,
-  _______, KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC, KC_PGDN, _______, _______, _______, KC_HOME, KC_DOWN, KC_END,  KC_BSLS, KC_TILD,
+  _______, KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC, KC_PGDN, _______, , _______, KC_HOME, KC_DOWN, KC_END,  KC_BSLS, _______,
                              _______, _______, _______, _______, _______, LOW_DEL, _______, _______
 ),
 
@@ -47,10 +49,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, KC_PERC, KC_PIPE,   _______, _______, KC_PSCR, KC_1,    KC_2,    KC_3,    KC_DOT, _______,
                              _______, _______, _______,  _______, KC_0,     KC_DOT, _______, _______
 ),
-[3] = LAYOUT(
+
+[_ADJUST] = LAYOUT(
   _______, _______, _______, _______, _______, _______,                   _______, KC_F10, KC_F11, KC_F12, _______, _______,
   _______, _______, _______, _______, _______, _______,                   _______, KC_F7,   KC_F8, KC_F9,  _______, _______,
-  _______, _______, _______, _______, _______, _______,                   _______, KC_F4,   KC_F5, KC_F6,  _______, _______,
+  _______, _______, _______, RGB_VAI, RGB_VAD, RGB_TOG,                   _______, KC_F4,   KC_F5, KC_F6,  _______, _______,
   _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_F1,   KC_F2, KC_F3,  _______, _______,
                              _______, _______, _______, _______, _______,  _______, _______, _______
   )
@@ -114,6 +117,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // set_timelog();
   }
   switch (keycode) {
+  case PASTE_WS: // your custom name
+      if (record->event.pressed) {
+          tap_code16(C(S(KC_V)));
+      }
+      return false;
   case CLN_EQ:
     if (record->event.pressed) {
       SEND_STRING(":=");
